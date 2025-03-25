@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { v4 as uuid } from "uuid";
+import { Products } from "../pages/Products/Products";
 
 interface CardType  {
   id: string;
@@ -66,8 +67,8 @@ type State = {
 
 type Actions = {
   getProducts: () => void;
-  liked: (newProducts: ProductType[]) => void;
-  deleted: (newProducts: ProductType[]) => void;
+  liked: (id: string) => void;
+  deleted: (id: string) => void;
   addNew: () => void
 };
 
@@ -84,7 +85,7 @@ export const useStore = create<State & Actions>((set) => ({
       );
       if (response.ok) {
         const res = await response.json().then((res) => res.nobelPrizes);
-        let products: ProductType[] = [];
+        const products: ProductType[] = [];
         res.map((el: ProductType) => {
           el.id = uuid();
           el.isLiked = false;
@@ -95,10 +96,19 @@ export const useStore = create<State & Actions>((set) => ({
         throw new Error("Error 2");
       }
     } catch (error) {
-      throw new Error("Error 1");
+      throw new Error("Error 1" + error);
     }
   },
-  liked: (newProducts: ProductType[] ) => set({ products: newProducts }),
-  deleted: (newProducts: ProductType[] ) => set({ products: newProducts }),
+  liked: (id: string) => {
+    set((state) => {
+      return {products: state.products.map(el => {
+        if (el.id === id) {
+          el.isLiked = !el.isLiked
+        }
+        return el
+      })}
+    })
+  } ,
+  deleted: (id: string) => set((state) => ({ products: state.products.filter(el => el.id !== id) })),
   addNew: () => set({}),
 }));

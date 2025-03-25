@@ -7,27 +7,13 @@ export const Card = (props: { element: ProductType; }) => {
     const isLiked = element.isLiked;
     const navigate = useNavigate();
     const location = useLocation();
-    const products = useStore((state) => state.products)
     const liked = useStore((state) => state.liked);
     const deleted = useStore((state) => state.deleted);
     const handleLike = (id: string) => {
-        const newProducts: ProductType[] = [];
-        products.map((el) => {
-            if (el.id === id) {
-                el.isLiked = !el.isLiked
-            }
-            newProducts.push(el)
-        })
-        liked(newProducts)
+        liked(id)
     }
     const handleDelete = (id: string) => {
-        const newProducts: ProductType[] = [];
-        products.map((el) => {
-            if (el.id !== id) {
-                newProducts.push(el)
-            }
-        })
-        deleted(newProducts)
+        deleted(id)
     }
     const likeButtonClassName = `card__btn card__like ${isLiked ? 'card__like_isliked' : ''}`
     return (
