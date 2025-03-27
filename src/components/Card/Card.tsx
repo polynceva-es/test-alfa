@@ -23,7 +23,7 @@ export const Card = (props: { element: ProductType; }) => {
             </div>
             <div className="card__info-container" onClick={() => navigate(`/products/${element.id}`)}>
                 <h1 className="card__title">{element.laureates}</h1>
-                <p>{element.category}</p>
+                <p className="card__title">{element.category}</p>
                 <p>{element.awardYear}</p>
                 <img className="card__image" src={element.url} alt="image" />
             </div>
