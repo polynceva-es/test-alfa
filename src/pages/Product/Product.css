@@ -5,15 +5,28 @@
     gap: 15px;
 }
 
+.product__container {
+    display: flex;
+    gap: 20px;
+}
+
 .product__title {
     font-size: 24px;
 }
 
 .product__subtitle {
     font-size: 20px;
-    max-width: 40%;
+    max-width: 400px;
+    text-align: justify;
 }
 
 .product__image {
-    max-width: 40%;
+    max-width: 400px;
+}
+
+.product__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
 }

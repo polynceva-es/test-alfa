@@ -3,6 +3,7 @@ form {
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+    margin: 0 auto;
 }
 
 input {
@@ -11,7 +12,4 @@ input {
 
 h1 {
     color: #2fcc8b;
-}
-section {
-    text-align: left;
 }

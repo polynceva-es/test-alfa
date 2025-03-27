@@ -3,7 +3,7 @@ import { data } from './data'
 
 export const Home = () => {
     return (
-        <section>
+        <section className='home'>
             <h1>{data.title}</h1>
             <h2>{data.task}</h2>
             <p>{data.taskList}</p>

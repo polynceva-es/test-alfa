@@ -18,7 +18,7 @@ export const Products = ({isLiked}: ProductsProps) => {
     }
 
     const handleShowMore = () => {
-        setPageNum(pageNum + 1)
+        setPageNum((pageNum)=>pageNum + 1)
     }
 
     return (

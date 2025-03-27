@@ -15,25 +15,6 @@ const App: FC = () => {
     getProducts();
   }, [])
 
-
-  // const findUnic = (array: string[]) => {
-  //   let result: any = new Map();
-
-  //   array.map((el) => {
-  //     let count: number = 1;
-  //     let elem = el.toLowerCase().split('').sort().join('');
-  //     result.has(elem) ? count = result.get(elem) + 1 : count = count;
-  //     result.set(elem, count)
-  //   })
-  //   return Array.from(result.keys())
-  // }
-
-
-  // console.log(findUnic(['Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a'])) //BbBb
-  // console.log(findUnic(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']))  //foo
-
-
-
   return (
     <>
       <NavBar setIsLiked={setIsLiked} />

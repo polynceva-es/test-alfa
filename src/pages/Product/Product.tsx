@@ -32,7 +32,7 @@ export const Product = () => {
     return (
         <>
             {element ? (
-                <div>
+                <div className="product__container">
                     <section className="product">
                         <h1 className="product__title">{element.laureates}</h1>
                         <img className="product__image" src={element.url} alt="image" />
@@ -42,8 +42,8 @@ export const Product = () => {
                         <button onClick={handleEdit}>Edit Product</button>
                     </section>
                     {isEdit ? <section>
-                        <h1>Update Product</h1>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <h2>Update Product</h2>
+                        <form className="product__form" onSubmit={handleSubmit(onSubmit)}>
                             <label>
                                 awardYear
                                 <input type='text' {...register("awardYear", { required: true })} />
