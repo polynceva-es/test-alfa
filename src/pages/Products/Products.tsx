@@ -1,29 +1,28 @@
 import "./Products.css";
-import { useState } from "react";
 import { ProductType, useStore } from "../../store/store";
 import { Card } from "../../components/Card/Card";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-export const Products = () => {
+type ProductsProps = {
+    isLiked: boolean
+}
+
+export const Products = ({isLiked}: ProductsProps) => {
     const products = useStore((state) => state.products);
-    let isLikedProduct: ProductType[] = []
-    const [isLiked, setIsLiked] = useState(false);
-    const navigate = useNavigate();
+    let isLikedProduct: ProductType[] = [];
+    const [pageNum, setPageNum] = useState(1);
+
 
     if (isLiked) {
         isLikedProduct = (products.filter((el) => el.isLiked === true))
     }
 
+    const handleShowMore = () => {
+        setPageNum(pageNum + 1)
+    }
+
     return (
         <div className="products">
-            <label className="checkbox-ios">
-                <input type="checkbox" onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    setIsLiked(event.target.checked)
-                }} />
-                <span className="checkbox-ios-switch"></span>
-                Selected
-            </label>
-            <button onClick={() => navigate('/create-product')}>Add new</button>
             <ul className="products__list">
                 {isLiked ? (
                     isLikedProduct?.map((el) => {
@@ -40,6 +39,8 @@ export const Products = () => {
                 )
                 }
             </ul>
+            <button onClick={handleShowMore}>Show more cards</button>
+            <p>{pageNum}</p>
         </div>
     )
 }

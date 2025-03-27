@@ -8,3 +8,10 @@ form {
 input {
     margin-left: 10px;
 }
+
+h1 {
+    color: #2fcc8b;
+}
+section {
+    text-align: left;
+}

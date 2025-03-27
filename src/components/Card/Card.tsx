@@ -1,12 +1,11 @@
 import "./Card.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ProductType, useStore } from "../../store/store"
 
 export const Card = (props: { element: ProductType; }) => {
     const element = props.element;
     const isLiked = element.isLiked;
     const navigate = useNavigate();
-    const location = useLocation();
     const liked = useStore((state) => state.liked);
     const deleted = useStore((state) => state.deleted);
     const handleLike = (id: string) => {
@@ -19,18 +18,15 @@ export const Card = (props: { element: ProductType; }) => {
     return (
         <div className="card">
             <div className="card__btn-container">
-                <button className={likeButtonClassName} onClick={() => handleLike(element.id)}/>
-                <button className="card__btn card__delete" onClick={() => handleDelete(element.id)}/>
+                <button className={likeButtonClassName} onClick={() => handleLike(element.id)} />
+                <button className="card__btn card__delete" onClick={() => handleDelete(element.id)} />
             </div>
-            <div onClick={() => navigate(`/products/${element.id}`)}> 
-                <h1 className="card__title">{element.laureates[0]?.fullName?.en}</h1>
-                <h2>{element.laureates[0]?.orgName?.en}</h2>
-                <h3>{element.laureates[0].id}</h3>
-                <p>{element.categoryFullName.en}</p>
+            <div className="card__info-container" onClick={() => navigate(`/products/${element.id}`)}>
+                <h1 className="card__title">{element.laureates}</h1>
+                <p>{element.category}</p>
                 <p>{element.awardYear}</p>
-                {(location.pathname === '/products') ? <></> : <h3 className="card__title">{element.laureates[0].motivation.en}</h3>}
+                <img className="card__image" src={element.url} alt="image" />
             </div>
-
         </div>
     )
 }

@@ -1,0 +1,19 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.product__title {
+    font-size: 24px;
+}
+
+.product__subtitle {
+    font-size: 20px;
+    max-width: 40%;
+}
+
+.product__image {
+    max-width: 40%;
+}

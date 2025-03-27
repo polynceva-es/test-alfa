@@ -1,0 +1,11 @@
+.nav {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+@media (max-width: 540px) {
+    .nav {
+        flex-direction: column;
+    }
+}

@@ -1,12 +1,16 @@
 .checkbox-ios {
 	display: inline-block;    
 	height: 28px;    
-	line-height: 28px;  
-	margin-right: 10px;      
+	line-height: 28px;     
 	position: relative;
 	vertical-align: middle;
 	font-size: 14px;
-	user-select: none;	
+	user-select: none;
+	color: #2fcc8b;	
+}
+
+.checkbox-ios-switch {
+margin-right: 10px;
 }
 .checkbox-ios .checkbox-ios-switch {
 	position: relative;	
@@ -45,7 +49,8 @@
 	box-shadow: inset 0 0 2px rgba(0, 0, 0, .3);
 }
 .checkbox-ios input[type=checkbox]:checked + .checkbox-ios-switch {
-	background: limegreen;
+	background: #2fcc8b;
+	;
 }
 .checkbox-ios input[type=checkbox]:checked + .checkbox-ios-switch:before {
 	transform:translateX(28px);
@@ -83,6 +88,7 @@
 	padding: 0;
 	margin: 0;
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 	gap: 10px;
 }
